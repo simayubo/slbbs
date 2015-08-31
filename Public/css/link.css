@@ -1,0 +1,18 @@
+/*全局文字颜色*/
+.text-color-999, .sl-placeholder, .category dl dd span, .sl-search-dropdown-list li > span, .sl-search-dropdown-list li.question a span, .sl-side-bar dd, .sl-question-comment-box .sl-mod-head .sl-notopic-sort, .sl-question-edit .sl-mod-body .pull-right, .sl-common-list .sl-question-replay-count, .sl-question-tags a, .sl-feed-list .sl-upload-file-list a, .sl-agree-by .sl-agree-by-show, .sl-agree-by .sl-user-name, .sl-my-notifications .sl-mod-head h2 span, .sl-my-notifications .sl-mod-body ul li.active span, .sl-publish-title-dropdown p span, .sl-side-bar-mod-publish .sl-side-bar-mod-body p, .sl-side-bar-mod-topic-edit .sl-side-bar-mod-body p, .sl-new-message-tips .sl-mod-head .pull-right, .sl-new-message-tips-close span, .sl-mod-search-result .sl-search-result-tags, .sl-publish-box .sl-publish-box-supplement, .sl-first-login .sl-mod-head ul li.active em, .sl-first-login .sl-complete-data .sl-complete-data-img span{color:#999;}
+.sl-text-color-666, .sl-dropdown-menu ul a, .alert, .sl-nav-tabs > li.active a, .sl-user-nav-dropdown .sl-dropdown-menu  li > a, .sl-search-dropdown-list li a, .sl-search-dropdown-list li.question a span.active, .sl-comment-list, .sl-question-edit .sl-mod-body, .sl-question-tags a:hover, .sl-topic-content .sl-topic-title, .sl-edit-topic:hover, .sl-mod-invite-friend .sl-invite-box p, .sl-tabs ul li a, .sl-footer, .sl-card-tips, .sl-mod-replay-box .sl-mod-head p label, .markItUpPreviewFrame, .sl-404-wrap p, .sl-ie6 .pull-right p{color:#666;}
+.sl-common-list .sl-question-replay-count em, .markItUpPreviewFrame .title, h1, h2, h3{color: #333;}
+.sl-message-tooltip, .sl-top-menu-wrap .sl-pulish a, .sl-nav-main li a,.sl-side-bar-mod-nav ul li a:hover, .sl-side-bar-mod-nav ul li a.active, .sl-common-list .sl-question-replay-count.active, .sl-first-login .sl-mod-head ul li em, .markItUpHeader ul ul a:hover{color:#fff;}
+.sl-load-more-content.warmming{color:#999;}
+.sl-text-color-red{color:red;}
+.sl-placeholder{color: #999 !important;}
+.sl-winner-replay{color:#1A9F00;}
+.sl-dropdown-menu ul a:hover{color: #3887d2;}
+.alert-danger, .alert-error{color:#B94A48;}
+.sl-nav-tabs > li > a{color: #666;}
+.sl-logo span{color: #CFF1FF;}
+.category .title a{color: #17344A;}
+.sl-nav-main li a:hover{color:#93E2F3;}
+.sl-search-dropdown-list li a:hover{color: #005580;}
+.sl-agree-by .sl-user-name{color: #999 !important;}
+.sl-ie6 .pull-right h1 span{color: #c20200;}

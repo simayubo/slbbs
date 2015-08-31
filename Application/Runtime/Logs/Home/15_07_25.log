@@ -1,0 +1,39 @@
+[ 2015-07-25T17:14:11+08:00 ] 127.0.0.1 /home/edit.html
+ERR: 无法加载控制器:Edit
+
+[ 2015-07-25T17:15:56+08:00 ] 127.0.0.1 /home/edit.html
+ERR: 无法加载控制器:Edit
+
+[ 2015-07-25T17:21:27+08:00 ] 127.0.0.1 /home/edit.html
+ERR: 无法加载控制器:Edit
+
+[ 2015-07-25T17:21:46+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: 参数错误或者未定义:id
+
+[ 2015-07-25T17:22:00+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: 参数错误或者未定义:id
+
+[ 2015-07-25T17:25:01+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:25:38+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:26:12+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:26:42+08:00 ] 127.0.0.1 /topic/edit.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:32:16+08:00 ] 127.0.0.1 /edit/24.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:33:04+08:00 ] 127.0.0.1 /edit/24.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T17:35:22+08:00 ] 127.0.0.1 /edit/24.html
+ERR: Think\Controller:I方法不存在！
+
+[ 2015-07-25T18:13:24+08:00 ] 127.0.0.1 /topic/post.html
+ERR: Think\Controller:xss_clean方法不存在！
+

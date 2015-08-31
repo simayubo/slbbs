@@ -1,0 +1,68 @@
+<extend name="Public/base"/>
+<block name="body">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>评论列表(统计)</h2>
+	</div>
+
+	<!-- 按钮工具栏 -->
+	<div class="cf">
+		<div class="fl">
+			<a class="btn" href="{:U('Slbbsadmin/Content/comment')}">查看全部</a>
+			<button class="btn confirm" target-form="ids" url="#">删 除</button>
+		</div>
+    </div>
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th class="row-selected row-selected">
+                        <input class="check-all" type="checkbox">
+                    </th>
+                    <th>编号</th>
+                    <th>内容</th>
+                    <th>层主</th>
+                    <th>帖子ID</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="comment_list" id="vo" empty="暂无数据">
+                    <tr>
+                        <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+                        <td>{$vo.cid}</td>
+                        <td style="max-width:300px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{$vo.content|strip_tags}
+                        </td>
+                        <td><a href="{:U('Slbbsadmin/Content/comment/user/'.$vo['uid'].'')}">{$vo.username}</a></td>
+                        <td><a href="{:U('Slbbsadmin/Content/comment/tid/'.$vo['tid'].'')}">{$vo.tid}</a></td>
+                        <td>
+                        <eq name="vo.hide" value='0'> 
+                            <a href="{:U('Slbbsadmin/Content/comment_hide/id/'.$vo[cid].'/value/1')}" title="点击审核评论"><font color='red'>审核</font></a>
+                        <else/>
+                            <a href="{:U('Slbbsadmin/Content/comment_hide/id/'.$vo[cid].'/value/0')}"  title="点击取消审核">正常</a>
+                        </eq>
+                        </td>
+                        <td>
+                        <a onclick="return confirm('您确定要删除吗？')" href="{:U('Slbbsadmin/Content/comment_del/id/'.$vo[cid].'')}">删除</a></td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+	</div>
+	<script type='text/javascript'>
+		function del(){
+			alert('你确定要删除此条帖子？');
+		}
+	</script>
+	<!-- 分页 -->
+    <div class="page">
+        <ul>{$page}</ul>
+    </div>
+</div>
+
+</block>

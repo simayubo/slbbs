@@ -1,0 +1,10 @@
+[ 2015-08-31T17:58:44+08:00 ] 127.0.0.1 /
+ERR: SQLSTATE[HY000] [2002] 由于目标计算机积极拒绝，无法连接。
+
+
+[ 2015-08-31T18:17:22+08:00 ] 127.0.0.1 /topic/20.html
+ERR: SQLSTATE[HY000]: General error: 1881 Operation not allowed when innodb_forced_recovery > 0.
+
+[ 2015-08-31T18:18:18+08:00 ] 127.0.0.1 /topic/16.html
+ERR: SQLSTATE[HY000]: General error: 1881 Operation not allowed when innodb_forced_recovery > 0.
+

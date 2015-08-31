@@ -1,0 +1,36 @@
+[ 2015-08-27T11:00:20+08:00 ] 127.0.0.1 /slbbsadmin/user/__STATIC__/thinkbox/jquery.thinkbox.js
+ERR: 非法操作:__STATIC__
+
+[ 2015-08-27T11:00:35+08:00 ] 127.0.0.1 /slbbsadmin/user/auth.html
+ERR: 非法操作:auth
+
+[ 2015-08-27T11:00:39+08:00 ] 127.0.0.1 /slbbsadmin/user/action.html
+ERR: 非法操作:action
+
+[ 2015-08-27T11:01:22+08:00 ] 127.0.0.1 /slbbsadmin/content/sort.html
+ERR: 非法操作:sort
+
+[ 2015-08-27T11:01:24+08:00 ] 127.0.0.1 /slbbsadmin/content/forum.html
+ERR: 非法操作:forum
+
+[ 2015-08-27T11:01:27+08:00 ] 127.0.0.1 /slbbsadmin/user/action.html
+ERR: 非法操作:action
+
+[ 2015-08-27T11:01:30+08:00 ] 127.0.0.1 /slbbsadmin/system/index.html
+ERR: 无法加载控制器:System
+
+[ 2015-08-27T11:01:33+08:00 ] 127.0.0.1 /slbbsadmin/plugins/index.html
+ERR: 无法加载控制器:Plugins
+
+[ 2015-08-27T11:04:05+08:00 ] 127.0.0.1 /slbbsadmin/content/sort.html
+ERR: 非法操作:sort
+
+[ 2015-08-27T11:22:41+08:00 ] 127.0.0.1 /slbbsadmin/content/sort.html
+ERR: 模板不存在:./Application/Slbbsadmin/View/Content/sort.html
+
+[ 2015-08-27T11:33:42+08:00 ] 127.0.0.1 /slbbsadmin/user/action.html
+ERR: 非法操作:action
+
+[ 2015-08-27T11:33:44+08:00 ] 127.0.0.1 /slbbsadmin/content/forum.html
+ERR: 非法操作:forum
+

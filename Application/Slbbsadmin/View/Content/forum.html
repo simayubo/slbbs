@@ -1,0 +1,67 @@
+<extend name="Public/base"/>
+<block name="body">
+	<!-- 标题 -->
+	<div class="main-title">
+		<h2>板块管理</h2>
+	</div>
+	<!-- 数据表格 -->
+    <div class="data-table">
+		<table>
+            <!-- 表头 -->
+            <thead>
+                <tr>
+                    <th class="row-selected row-selected">
+                        <input class="check-all" type="checkbox">
+                    </th>
+                    <th>排列顺序</th>
+                    <th>板块ID</th>
+                    <th>名称</th>
+                    <th>介绍</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+
+            <!-- 列表 -->
+            <tbody>
+                <volist name="sort_list" id="vo">
+                    <tr>
+                        <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
+                        <td>{$vo.sort_order}</td>
+                        <td>{$vo.id}</td>
+                        <td>{$vo.sort_name}</td>
+                        <td>{$vo.sort_intor}</td>
+                        <td><a href="{:U('Slbbsadmin/Content/sort/edit_id/'.$vo['id'].'')}">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此分类下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
+                    </tr>
+                </volist>
+            </tbody>
+        </table>
+	</div>
+	<!-- 分页 -->
+    <div class="page">
+        <ul>{$page}</ul>
+    </div>
+    <div style="width:300px;float:left;">
+        <form action="{:U('Slbbsadmin/Content/sort/type/add')}" method="post">
+            <h3>新增分类</h3>
+            排列顺序：<input type="text" name="sort_order" class="text" /> <br/>
+            分类名称：<input type="text" name="sort_name"  class="text" /><br/>
+            分类介绍：<textarea name="sort_intor" rows="3" class="text"></textarea><br/>
+            <input type="submit" value="新增" class="btn success" />
+        </form>
+    </div>
+    <notempty name="sort">
+        <div style="width:300px;float:left;margin-left:20px;">
+        <form action="{:U('Slbbsadmin/Content/sort/type/edit')}" method="post">
+            <h3>编辑分类</h3>
+            分类ID: {$sort.id}<br/>
+            排列顺序：<input type="text" name="sort_order" value="{$sort.sort_order}" class="text" /> <br/>
+            分类名称：<input type="text" name="sort_name" value="{$sort.sort_name}" class="text" /><br/>
+            分类介绍：<textarea name="sort_intor" rows="3" class="text">{$sort.sort_intor}</textarea><br/>
+            <input type="hidden" name="id" value="{$sort.id}" />
+            <input type="submit" value="提交" class="btn success" />
+        </form>
+        </div>
+    </notempty>
+</div>
+
+</block>

@@ -1,0 +1,151 @@
+<extend name="Public/base"/>
+
+<block name="sidebar"></block>
+
+<block name="style">
+    <style>
+        body{padding:50px 0 0 0;}
+    </style>
+</block>
+
+<block name="body">
+    <!-- 主体 -->
+    <div id="indexMain" class="index-main">
+       <!-- 插件块 -->
+       	<div class="container-span"> 
+       		<div class="container-span top-columns cf">
+				<dl class="show-num-mod">
+					<dt><i class="count-icon user-count-icon"></i></dt>
+					<dd>
+						<strong>{$count.user}</strong>
+						<span>用户数</span>
+					</dd>
+				</dl>
+				<dl class="show-num-mod">
+					<dt><i class="count-icon user-action-icon"></i></dt>
+					<dd>
+						<strong>{$count.topic}</strong>
+						<span>主题统计</span>
+					</dd>
+				</dl>
+				<dl class="show-num-mod">
+					<dt><i class="count-icon doc-count-icon"></i></dt>
+					<dd>
+						<strong>{$count.comment}</strong>
+						<span>回贴统计</span>
+					</dd>
+				</dl>
+	<dl class="show-num-mod">
+		<dt><i class="count-icon doc-modal-icon"></i></dt>
+		<dd>
+			<strong>{$count.forum}</strong>
+			<span>板块统计</span>
+		</dd>
+	</dl>
+	<dl class="show-num-mod">
+		<dt><i class="count-icon category-count-icon"></i></dt>
+		<dd>
+			<strong>{$count.file}</strong>
+			<span>附件统计</span>
+		</dd>
+	</dl>
+</div>
+<div class="span2">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>系统信息</h5>
+			<div class="title-opt">
+			</div>
+		</div>
+		<div class="bd">
+			<div class="sys-info">
+				<table>
+					<tr>
+						<th>Slbbs版本</th>
+						<td>1.0.0 beta&nbsp;&nbsp;&nbsp;
+													</td>
+					</tr>
+					<tr>
+						<th>运行环境</th>
+						<td>{$common.site.os}</td>
+					</tr>
+					<tr>
+						<th>ThinkPHP版本</th>
+						<td>{$Think.version}</td>
+					</tr>
+					<tr>
+						<th>脚本执行最大时间</th>
+						<td>{$common.site.max_ex_time}</td>
+					</tr>
+					<tr>
+						<th>MYSQL版本</th>
+						<td>{$common.site.mysql}</td>
+					</tr>
+					<tr>
+						<th>上传限制</th>
+						<td>{$common.site.max_upload}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="span2">
+	<div class="columns-mod">
+		<div class="hd cf">
+			<h5>产品信息</h5>
+			<div class="title-opt">
+			</div>
+		</div>
+		<div class="bd">
+			<div class="sys-info">
+				<table>
+					<tr>
+						<th>产品设计</th>
+						<td>流年、太疯癫</td>
+					</tr>
+					<tr>
+						<th>后台开发</th>
+						<td>流年、太疯癫</td>
+					</tr>
+					<tr>
+						<th>界面设计</th>
+						<td>流年、太疯癫</td>
+					</tr>
+					<tr>
+						<th>官方博客</th>
+						<td><a href="http://www.sima5.cn" target="_blank">www.sima5.cn</a></td>
+					</tr>
+					<tr>
+						<th>官方QQ群</th>
+						<td><a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=cbd7087deb9149e8716bd7e5ccb6d4b0057c6f17a3b9504c73a308313cd793f9"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="PHP开发群" title="PHP开发群"></a></td>
+					</tr>
+					<tr>
+						<th>BUG反馈</th>
+						<td>请到博客或者QQ群反馈BUG</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+   </div>
+  </div>
+ </div>
+</block>
+
+<block name="script">
+<script type="text/javascript">
+    /* 插件块关闭操作 */
+    $(".title-opt .wm-slide").each(function(){
+        $(this).click(function(){
+            $(this).closest(".columns-mod").find(".bd").toggle();
+            $(this).find("i").toggleClass("mod-up");
+        });
+    })
+    $(function(){
+        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
+        $('.copyright').html('<div class="copyright"> ©2015-2020 SLBBS版权所有</div>');
+        $('.sidebar').remove();
+    })
+</script>
+</block>
