@@ -17,7 +17,7 @@ class ForumModel extends Model
 		}else if($type='all') {
 			$sql="SELECT sl_forum.id,sl_forum.order,sl_forum.name,sl_forum.topic_count,sl_forum.comment_count,sl_forum.sort_id,sl_forum.icon,sl_forum.intor,sl_forum.hot
 				FROM sl_forum
-				LEFT JOIN sl_sort ON sl_forum.sort_id=sl_sort.id";
+				LEFT JOIN sl_sort ON sl_forum.sort_id=sl_sort.id ORDER BY sl_forum.hot desc,sl_forum.order";
 		}
 		$r=$this->query($sql);
 		return $r;

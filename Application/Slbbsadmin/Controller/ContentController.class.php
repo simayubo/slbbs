@@ -4,8 +4,8 @@
 */
 namespace Slbbsadmin\Controller;
 use Think\Controller;
-class ContentController extends Controller
-{
+class ContentController extends Controller{
+	
 	/**
 	 * 侧边栏
 	 * @param  [type] $type  大分类
@@ -32,14 +32,6 @@ class ContentController extends Controller
 				3 => array(
               		'title' =>  '版块管理' ,
               		'url' 	=> 'Content/forum' ,
-					),
-				),
-			'垃圾箱' => array(
-				0 => array(
-					'id' 	=>  '19' ,
-              		'pid' 	=>  '16' ,
-              		'title' =>  '用户行为' ,
-              		'url' 	=>  'User/action' ,
 					),
 				),
 			);
@@ -191,7 +183,7 @@ class ContentController extends Controller
 
 		if (!empty( I('get.type') )) {
 			
-			if (empty(I('post.forum_order')) || empty(I('post.forum_name')) || empty(I('post.forum_intor'))) {
+			if (empty(I('post.order')) || empty(I('post.name')) || empty(I('post.intor'))) {
 				
 				echo "<script>alert('请完整填写表单！')</script>";
 			}else{
@@ -230,18 +222,18 @@ class ContentController extends Controller
 			
 			//获取板块详细信息
 			$id   	= I( 'get.edit_id' );
-			$sort 	= D('Sort') ->getSortList();
 			$forum 	= M('Forum')->where("id = %d", $id) ->find();
-			$this ->assign('sort', $sort);
 			$this ->assign('forum', $forum);
 		}
-
+		
+		$sort 	= D('Sort') ->getSortList();
 		$Forum_list = D('Forum') ->getForumList();
 
 		$title = '板块管理';
 
 		$this ->assign('title', $title);
 		$this ->assign('forum_list', $Forum_list);
+		$this ->assign('sort', $sort);
 		$this ->assign('common', $common);
 		$this ->assign('__MENU__', $__MENU__);
 		$this ->display();

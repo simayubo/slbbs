@@ -28,8 +28,6 @@ class UserController extends Controller
 				),
 			'行为管理' => array(
 				0 => array(
-					'id' 	=>  '19' ,
-              		'pid' 	=>  '16' ,
               		'title' =>  '用户行为' ,
               		'url' 	=>  'User/action' ,
 					),

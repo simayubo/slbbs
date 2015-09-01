@@ -26,7 +26,8 @@ class ForumModel extends Model{
 					sl_sort.sort_name
 				FROM sl_forum 
 				LEFT JOIN sl_sort ON sl_forum.sort_id = sl_sort.id 
-				LIMIT %d,%d ";
+				ORDER BY sl_forum.sort_id,sl_forum.order
+				LIMIT %d,%d";
 		$res = $this ->query($sql, $sta, $num);
 		return $res;
 		

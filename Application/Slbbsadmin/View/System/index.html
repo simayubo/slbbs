@@ -1,0 +1,47 @@
+<extend name="Public/base"/>
+<block name="body">
+	<div class="main-title">
+		<h2>系统基本配置</h2>
+	</div>
+	<label><b>站点名称:</b></label><br/>
+	<input type='text' name='site_title' value="{$website.site_title}" class='text' /><br/>
+	<font color="#777" size="0.9em">用于设置站点名称</font><br/><br/>
+	
+	<label><b>站点副标题:</b></label><br/>
+	<input type='text' name='site_subtitle' value="{$website.site_subtitle}" class='text' /><br/>
+	<font color="#777" size="0.9em">站点副标题，一般显示在站点名称后</font><br/><br/>
+	
+	<label><b>站点网址:</b></label><br/>
+	<input type='text' name='site_url' value="{$website.site_url}" class='text' /><br/>
+	<font color="#777" size="0.9em">网站永久链接，不正确可能导致css、js等加载失败(需加http://)</font><br/><br/>
+	
+	<label><b>站点介绍:</b></label><br/>
+	<textarea name="site_description" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;">{$website.site_description}</textarea><br/>
+    <font color="#777" size="0.9em">站点的简单介绍</font><br/><br/>
+    
+    <label><b>关键字:</b></label><br/>
+	<textarea name="site_keywords" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;">{$website.site_keywords}</textarea><br/>
+    <font color="#777" size="0.9em">站点关键字，用于SEO优化</font><br/><br/>
+    
+    <label><b>备案号:</b></label><br/>
+	<input type='text' name='site_icp' value="{$website.site_icp}" class="text" /><br/>
+    <font color="#777" size="0.9em">输入你的网站ICP备案号</font><br/><br/>
+    
+	<label><b>站点开关：</b></label>&nbsp;&nbsp;
+	开：<input type="radio" name="site_switch" <IF condition="$website.site_switch eq 1">checked="checked"</IF>>  &nbsp;&nbsp;关：<input type="radio" name="site_switch" <IF condition="$website.site_switch eq 0">checked="checked"</IF>><br/><br/>
+	
+	<label><b>站点关闭公告:</b></label><br/>
+	<textarea name="site_off_reason" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;">{$website.site_off_reason}</textarea><br/>
+    <font color="#777" size="0.9em">如果要关闭站点，需要填入公告，将显示在关闭站点后的页面</font><br/><br/>
+	
+	<label><b>会员注册：</b></label>&nbsp;&nbsp;
+	开：<input type="radio" name="site_register" <IF condition="$website.site_register eq 1">checked="checked"</IF>>  &nbsp;&nbsp;关：<input type="radio" name="site_register" <IF condition="$website.site_register eq 0">checked="checked"</IF>><br/><br/>
+
+	<input type="submit" value="保存设置" class="btn success" />
+</block>

@@ -51,10 +51,6 @@ class PublicController extends Controller
 					'title'	=>	'系统',
 					'url'	=>	'System/index',	
 					),
-				5 => array(
-					'title'	=>	'插件',
-					'url'	=>	'Plugins/index',	
-					),
 				),
 			);
 		return $__MENU__;

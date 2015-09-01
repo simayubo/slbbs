@@ -12,6 +12,7 @@ return array(
 	'URL_CASE_INSENSITIVE'  	=>  true, 				//不区分大小写
  	'TMPL_CACHE_ON'         	=>  false,        		// 是否开启模板编译缓存,设为false则每次都会重新编译(调试时开启)
  	'MY_CACHE_TIME'				=>	120,				//自定义数据查询缓存时间
+	'URL_HTML_SUFFIX'			=>	'',					//强制取消U生成的.html
 	
 		
 );

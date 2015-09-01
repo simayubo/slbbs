@@ -275,30 +275,5 @@
         }();
     </script>
     
-<script type="text/javascript">
-$(function(){
-    //回车自动提交
-    $('.search-form').find('input').keyup(function(event){
-        if(event.keyCode===13){
-            $("#search").click();
-        }
-    });
-
-    $('#time-start').datetimepicker({
-        format: 'yyyy-mm-dd',
-        language:"zh-CN",
-	    minView:2,
-	    autoclose:true
-    });
-
-    $('#time-end').datetimepicker({
-        format: 'yyyy-mm-dd',
-        language:"zh-CN",
-	    minView:2,
-	    autoclose:true
-    });
-})
-</script>
-
 </body>
 </html>

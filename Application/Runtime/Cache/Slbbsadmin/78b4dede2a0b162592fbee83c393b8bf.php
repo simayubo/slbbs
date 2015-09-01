@@ -72,97 +72,50 @@
             
 
             
-	<!-- 标题 -->
 	<div class="main-title">
-		<h2>板块管理</h2>
+		<h2>系统基本配置</h2>
 	</div>
-	<!-- 数据表格 -->
-    <div class="data-table">
-		<table>
-            <!-- 表头 -->
-            <thead>
-                <tr>
-                    <th class="row-selected row-selected">
-                        <input class="check-all" type="checkbox">
-                    </th>
-                    <th>所属分类</th>
-                    <th>板块ID</th>
-                    <th>排列顺序</th>
-                    <th>名称</th>
-                    <th>介绍</th>
-                    <th>标记重要</th>
-                    <th>帖子统计</th>
-                    <th>回复统计</th>
-                    <th>发帖权限</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
+	<label><b>站点名称:</b></label><br/>
+	<input type='text' name='site_title' value="<?php echo ($website["site_title"]); ?>" class='text' /><br/>
+	<font color="#777" size="0.9em">用于设置站点名称</font><br/><br/>
+	
+	<label><b>站点副标题:</b></label><br/>
+	<input type='text' name='site_subtitle' value="<?php echo ($website["site_subtitle"]); ?>" class='text' /><br/>
+	<font color="#777" size="0.9em">站点副标题，一般显示在站点名称后</font><br/><br/>
+	
+	<label><b>站点网址:</b></label><br/>
+	<input type='text' name='site_url' value="<?php echo ($website["site_url"]); ?>" class='text' /><br/>
+	<font color="#777" size="0.9em">网站永久链接，不正确可能导致css、js等加载失败(需加http://)</font><br/><br/>
+	
+	<label><b>站点介绍:</b></label><br/>
+	<textarea name="site_description" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;"><?php echo ($website["site_description"]); ?></textarea><br/>
+    <font color="#777" size="0.9em">站点的简单介绍</font><br/><br/>
+    
+    <label><b>关键字:</b></label><br/>
+	<textarea name="site_keywords" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;"><?php echo ($website["site_keywords"]); ?></textarea><br/>
+    <font color="#777" size="0.9em">站点关键字，用于SEO优化</font><br/><br/>
+    
+    <label><b>备案号:</b></label><br/>
+	<input type='text' name='site_icp' value="<?php echo ($website["site_icp"]); ?>" class="text" /><br/>
+    <font color="#777" size="0.9em">输入你的网站ICP备案号</font><br/><br/>
+    
+	<label><b>站点开关：</b></label>&nbsp;&nbsp;
+	开：<input type="radio" name="site_switch" <?php if($website["site_switch"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_switch" <?php if($website["site_switch"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
+	
+	<label><b>站点关闭公告:</b></label><br/>
+	<textarea name="site_off_reason" row='5' style="width:220px;padding: 4px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;"><?php echo ($website["site_off_reason"]); ?></textarea><br/>
+    <font color="#777" size="0.9em">如果要关闭站点，需要填入公告，将显示在关闭站点后的页面</font><br/><br/>
+	
+	<label><b>会员注册：</b></label>&nbsp;&nbsp;
+	开：<input type="radio" name="site_register" <?php if($website["site_register"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_register" <?php if($website["site_register"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
 
-            <!-- 列表 -->
-            <tbody>
-                <?php if(is_array($forum_list)): $i = 0; $__LIST__ = $forum_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                        <td><input class="ids" type="checkbox" value="<?php echo ($data['id']); ?>" name="ids[]"></td>
-                        <td><?php echo ($vo["sort_name"]); ?></td>
-                        <td><?php echo ($vo["id"]); ?></td>
-                        <td><?php echo ($vo["order"]); ?></td>
-                        <td><?php echo ($vo["name"]); ?></td>
-                        <td><?php echo ($vo["intor"]); ?></td>
-                        <td><?php echo ($vo['hot'] == 0? '普通' : '<font color="red">重要</font>'); ?></td>
-                        <td><?php echo ($vo["topic_count"]); ?></td>
-                        <td><?php echo ($vo["comment_count"]); ?></td>
-                        <td><?php echo ($vo['allow'] == 0? '管理员' : '无限制'); ?></td>
-                        <td><a href="<?php echo U('Slbbsadmin/Content/forum/edit_id/'.$vo['id'].'');?>">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此板块下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
-                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-            </tbody>
-        </table>
-	</div>
-	<!-- 分页 -->
-    <div class="page">
-        <ul><?php echo ($page); ?></ul>
-    </div>
-    <div style="width:300px;float:left;">
-        <form action="<?php echo U('Slbbsadmin/Content/forum/type/add');?>" method="post">
-            <h3>新增板块</h3>
-            排列顺序：<input type="text" name="order" class="text" /> <br/>
-            板块名称：<input type="text" name="name"  class="text" /><br/>
-            所属分类：<select name="sort_id">
-                 <?php if(is_array($sort)): $i = 0; $__LIST__ = $sort;if( count($__LIST__)==0 ) : echo "暂无分类" ;else: foreach($__LIST__ as $key=>$uo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($uo["id"]); ?>"><?php echo ($uo["sort_name"]); ?></option><?php endforeach; endif; else: echo "暂无分类" ;endif; ?>
-               </select><br/>
-            板块介绍：<textarea name="intor" rows="3" class="text"><?php echo ($intor); ?></textarea><br/>
-            发帖权限：<select name="allow">
-                        <option value="0">管理员</option>
-                        <option value="1">无限制</option>
-                      </select><br/>
-            标记重要：<select name="hot">
-                        <option value='1'>是</option>
-                        <option value='0'>否</option>
-                      </select><br/>
-            <input type="submit" value="新增" class="btn success" />
-        </form>
-    </div>
-    <?php if(!empty($forum)): ?><div style="width:300px;float:left;margin-left:20px;">
-        <form action="<?php echo U('Slbbsadmin/Content/forum/type/edit');?>" method="post">
-            <h3>编辑板块</h3>
-            排列顺序：<input type="text" name="order" value="<?php echo ($forum["order"]); ?>" class="text" /> <br/>
-            板块名称：<input type="text" name="name" value="<?php echo ($forum["name"]); ?>"  class="text" /><br/>
-            所属分类：<select name="sort_id">
-            		<?php if(is_array($sort)): $i = 0; $__LIST__ = $sort;if( count($__LIST__)==0 ) : echo "暂无分类" ;else: foreach($__LIST__ as $key=>$uo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($uo["id"]); ?>" <?php if($uo['id'] == $forum['sort_id']) echo 'selected="selected"'; ?>><?php echo ($uo["sort_name"]); ?></option><?php endforeach; endif; else: echo "暂无分类" ;endif; ?>
-               </select><br/>
-            板块介绍：<textarea name="intor" rows="3" class="text"><?php echo ($forum["intor"]); ?></textarea><br/>
-            发帖权限：<select name="allow">
-                        <option value="0" <?php if($forum["allow"] == 0): ?>selected="selected"<?php endif; ?>>管理员</option>
-                        <option value="1" <?php if($forum["allow"] == 1): ?>selected="selected"<?php endif; ?>>无限制</option>
-                      </select><br/>
-            标记重要：<select name="hot">
-                        <option value="1" <?php if($forum["hot"] == 1): ?>selected="selected"<?php endif; ?>>是</option>
-                        <option value="0" <?php if($forum["hot"] == 0): ?>selected="selected"<?php endif; ?>>否</option>
-                      </select><br/>
-            <input type="hidden" name="id" value="<?php echo ($forum["id"]); ?>" />
-            <input type="submit" value="提交" class="btn success" />
-        </form>
-        </div><?php endif; ?>
-</div>
-
+	<input type="submit" value="保存设置" class="btn success" />
 
         </div>
         <div class="cont-ft">
