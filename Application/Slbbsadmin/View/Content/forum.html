@@ -15,22 +15,32 @@
                     </th>
                     <th>排列顺序</th>
                     <th>板块ID</th>
+                    <th>所属分类</th>
                     <th>名称</th>
                     <th>介绍</th>
+                    <th>标记重要</th>
+                    <th>帖子统计</th>
+                    <th>回复统计</th>
+                    <th>发帖权限</th>
                     <th>操作</th>
                 </tr>
             </thead>
 
             <!-- 列表 -->
             <tbody>
-                <volist name="sort_list" id="vo">
+                <volist name="forum_list" id="vo">
                     <tr>
                         <td><input class="ids" type="checkbox" value="{$data['id']}" name="ids[]"></td>
-                        <td>{$vo.sort_order}</td>
+                        <td>{$vo.order}</td>
                         <td>{$vo.id}</td>
                         <td>{$vo.sort_name}</td>
-                        <td>{$vo.sort_intor}</td>
-                        <td><a href="{:U('Slbbsadmin/Content/sort/edit_id/'.$vo['id'].'')}">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此分类下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
+                        <td>{$vo.name}</td>
+                        <td>{$vo.intor}</td>
+                        <td>{$vo['hot'] == 0? '普通' : '<font color="red">重要</font>' }</td>
+                        <td>{$vo.topic_count}</td>
+                        <td>{$vo.comment_count}</td>
+                        <td>{$vo['allow'] == 0? '管理员' : '无限制' }</td>
+                        <td><a href="{:U('Slbbsadmin/Content/forum/edit_id/'.$vo['id'].'')}">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此板块下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
                     </tr>
                 </volist>
             </tbody>
@@ -41,23 +51,47 @@
         <ul>{$page}</ul>
     </div>
     <div style="width:300px;float:left;">
-        <form action="{:U('Slbbsadmin/Content/sort/type/add')}" method="post">
-            <h3>新增分类</h3>
+        <form action="{:U('Slbbsadmin/Content/forum/type/add')}" method="post">
+            <h3>新增板块</h3>
             排列顺序：<input type="text" name="sort_order" class="text" /> <br/>
-            分类名称：<input type="text" name="sort_name"  class="text" /><br/>
-            分类介绍：<textarea name="sort_intor" rows="3" class="text"></textarea><br/>
+            板块名称：<input type="text" name="sort_name"  class="text" /><br/>
+            所属分类：<select>
+                        <option>1</option>
+                        <option>2</option>
+                      </select><br/>
+            板块介绍：<textarea name="sort_intor" rows="3" class="text"></textarea><br/>
+            发帖权限：<select>
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                      </select><br/>
+            标记重要：<select>
+                        <option>是</option>
+                        <option>否</option>
+                      </select><br/>
             <input type="submit" value="新增" class="btn success" />
         </form>
     </div>
     <notempty name="sort">
         <div style="width:300px;float:left;margin-left:20px;">
-        <form action="{:U('Slbbsadmin/Content/sort/type/edit')}" method="post">
-            <h3>编辑分类</h3>
-            分类ID: {$sort.id}<br/>
-            排列顺序：<input type="text" name="sort_order" value="{$sort.sort_order}" class="text" /> <br/>
-            分类名称：<input type="text" name="sort_name" value="{$sort.sort_name}" class="text" /><br/>
-            分类介绍：<textarea name="sort_intor" rows="3" class="text">{$sort.sort_intor}</textarea><br/>
-            <input type="hidden" name="id" value="{$sort.id}" />
+        <form action="{:U('Slbbsadmin/Content/forum/type/edit')}" method="post">
+            <h3>编辑板块</h3>
+            排列顺序：<input type="text" name="order" value="{$forum.order}" class="text" /> <br/>
+            板块名称：<input type="text" name="name" value="{$forum.name}"  class="text" /><br/>
+            所属分类：<select name="sort_id">
+            		<volist name="sort" id="uo" empty="暂无分类">
+                 		<option value="{$uo.id}">{$uo.sort_name}</option>
+                 	</volist>
+               </select><br/>
+            板块介绍：<textarea name="intor" rows="3" class="text">{$forum.intor}</textarea><br/>
+            发帖权限：<select name="allow">
+                        <option value="0">管理员</option>
+                        <option value="1">普通用户</option>
+                      </select><br/>
+            标记重要：<select name="hot">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                      </select><br/>
+            <input type="hidden" name="id" value="{$forum.id}" />
             <input type="submit" value="提交" class="btn success" />
         </form>
         </div>

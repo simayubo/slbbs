@@ -1,0 +1,15 @@
+[ 2015-08-31T20:12:55+08:00 ] 127.0.0.1 /slbbsadmin/user/__STATIC__/thinkbox/jquery.thinkbox.js
+ERR: 非法操作:__STATIC__
+
+[ 2015-08-31T21:07:15+08:00 ] 127.0.0.1 /slbbsadmin/user/__STATIC__/thinkbox/jquery.thinkbox.js
+ERR: 非法操作:__STATIC__
+
+[ 2015-08-31T21:07:17+08:00 ] 127.0.0.1 /slbbsadmin/system/index.html
+ERR: 无法加载控制器:System
+
+[ 2015-08-31T21:07:20+08:00 ] 127.0.0.1 /slbbsadmin/user/__STATIC__/thinkbox/jquery.thinkbox.js
+ERR: 非法操作:__STATIC__
+
+[ 2015-08-31T21:07:29+08:00 ] 127.0.0.1 /slbbsadmin/user/__STATIC__/thinkbox/jquery.thinkbox.js
+ERR: 非法操作:__STATIC__
+

@@ -8,3 +8,9 @@ ERR: SQLSTATE[HY000]: General error: 1881 Operation not allowed when innodb_forc
 [ 2015-08-31T18:18:18+08:00 ] 127.0.0.1 /topic/16.html
 ERR: SQLSTATE[HY000]: General error: 1881 Operation not allowed when innodb_forced_recovery > 0.
 
+[ 2015-08-31T20:13:06+08:00 ] 127.0.0.1 /Public/editor/default/default.css
+ERR: 非法操作:editor
+
+[ 2015-08-31T20:28:15+08:00 ] 127.0.0.1 /Public/editor/default/default.css
+ERR: 非法操作:editor
+

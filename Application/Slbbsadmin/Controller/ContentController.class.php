@@ -189,9 +189,59 @@ class ContentController extends Controller
 		$common 	= $p ->common();
 		$__MENU__ 	= $this ->sidebar('内容管理', 3);
 
+		if (!empty( I('get.type') )) {
+			
+			if (empty(I('post.forum_order')) || empty(I('post.forum_name')) || empty(I('post.forum_intor'))) {
+				
+				echo "<script>alert('请完整填写表单！')</script>";
+			}else{
+
+				if (I('get.type') == 'edit') {
+
+					$_data = array(
+						'id'		=> I('post.id'),
+						'name' 		=> I('post.name'),
+						'intor' 	=> I('post.intor'),
+						'order' 	=> I('post.order'),
+						'sort_id'	=> I('post.sort_id'),
+						'hot'		=> I('post.hot'),
+						'allow'		=> I('post.allow'),
+					);
+					$_r = M('Forum') ->save($_data); //编辑分类
+
+				}else if (I('get.type') == 'add') {
+
+					$_data = array(
+					'name' 		=> I('post.name'),
+					'intor' 	=> I('post.intor'),
+					'order' 	=> I('post.order'), 
+					'sort_id'	=> I('post.sort_id'),
+					'hot'		=> I('post.hot'),
+					'allow'		=> I('post.allow'),
+					);
+					$_r = M('Forum') ->add($_data); //添加分类
+				}
+				if ($_r > 0) echo "<script>alert('操作成功！')</script>";
+				else echo "<script>alert('操作失败！')</script>";
+			}
+		}
+		
+		if (!empty( I( 'get.edit_id' ) )) {
+			
+			//获取板块详细信息
+			$id   	= I( 'get.edit_id' );
+			$sort 	= D('Sort') ->getSortList();
+			$forum 	= M('Forum')->where("id = %d", $id) ->find();
+			$this ->assign('sort', $sort);
+			$this ->assign('forum', $forum);
+		}
+
+		$Forum_list = D('Forum') ->getForumList();
+
 		$title = '板块管理';
 
 		$this ->assign('title', $title);
+		$this ->assign('forum_list', $Forum_list);
 		$this ->assign('common', $common);
 		$this ->assign('__MENU__', $__MENU__);
 		$this ->display();

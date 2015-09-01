@@ -87,21 +87,31 @@
                     </th>
                     <th>排列顺序</th>
                     <th>板块ID</th>
+                    <th>所属分类</th>
                     <th>名称</th>
                     <th>介绍</th>
+                    <th>标记重要</th>
+                    <th>帖子统计</th>
+                    <th>回复统计</th>
+                    <th>发帖权限</th>
                     <th>操作</th>
                 </tr>
             </thead>
 
             <!-- 列表 -->
             <tbody>
-                <?php if(is_array($sort_list)): $i = 0; $__LIST__ = $sort_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                <?php if(is_array($forum_list)): $i = 0; $__LIST__ = $forum_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
                         <td><input class="ids" type="checkbox" value="<?php echo ($data['id']); ?>" name="ids[]"></td>
-                        <td><?php echo ($vo["sort_order"]); ?></td>
+                        <td><?php echo ($vo["order"]); ?></td>
                         <td><?php echo ($vo["id"]); ?></td>
                         <td><?php echo ($vo["sort_name"]); ?></td>
-                        <td><?php echo ($vo["sort_intor"]); ?></td>
-                        <td><a href="<?php echo U('Slbbsadmin/Content/sort/edit_id/'.$vo['id'].'');?>">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此分类下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
+                        <td><?php echo ($vo["name"]); ?></td>
+                        <td><?php echo ($vo["intor"]); ?></td>
+                        <td><?php echo ($vo['hot'] == 0? '普通' : '<font color="red">重要</font>'); ?></td>
+                        <td><?php echo ($vo["topic_count"]); ?></td>
+                        <td><?php echo ($vo["comment_count"]); ?></td>
+                        <td><?php echo ($vo['allow'] == 0? '管理员' : '无限制'); ?></td>
+                        <td><a href="<?php echo U('Slbbsadmin/Content/forum/edit_id/'.$vo['id'].'');?>">编辑</a> | <a href="#" onclick="return confirm('你的操作会删除此板块下所有帖子！请将帖子转移后再删除！你确定要删除此分类？')">删除</a></td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
             </tbody>
         </table>
@@ -111,22 +121,44 @@
         <ul><?php echo ($page); ?></ul>
     </div>
     <div style="width:300px;float:left;">
-        <form action="<?php echo U('Slbbsadmin/Content/sort/type/add');?>" method="post">
-            <h3>新增分类</h3>
+        <form action="<?php echo U('Slbbsadmin/Content/forum/type/add');?>" method="post">
+            <h3>新增板块</h3>
             排列顺序：<input type="text" name="sort_order" class="text" /> <br/>
-            分类名称：<input type="text" name="sort_name"  class="text" /><br/>
-            分类介绍：<textarea name="sort_intor" rows="3" class="text"></textarea><br/>
+            板块名称：<input type="text" name="sort_name"  class="text" /><br/>
+            所属分类：<select>
+                        <option>1</option>
+                        <option>2</option>
+                      </select><br/>
+            板块介绍：<textarea name="sort_intor" rows="3" class="text"></textarea><br/>
+            发帖权限：<select>
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                      </select><br/>
+            标记重要：<select>
+                        <option>是</option>
+                        <option>否</option>
+                      </select><br/>
             <input type="submit" value="新增" class="btn success" />
         </form>
     </div>
     <?php if(!empty($sort)): ?><div style="width:300px;float:left;margin-left:20px;">
-        <form action="<?php echo U('Slbbsadmin/Content/sort/type/edit');?>" method="post">
-            <h3>编辑分类</h3>
-            分类ID: <?php echo ($sort["id"]); ?><br/>
-            排列顺序：<input type="text" name="sort_order" value="<?php echo ($sort["sort_order"]); ?>" class="text" /> <br/>
-            分类名称：<input type="text" name="sort_name" value="<?php echo ($sort["sort_name"]); ?>" class="text" /><br/>
-            分类介绍：<textarea name="sort_intor" rows="3" class="text"><?php echo ($sort["sort_intor"]); ?></textarea><br/>
-            <input type="hidden" name="id" value="<?php echo ($sort["id"]); ?>" />
+        <form action="<?php echo U('Slbbsadmin/Content/forum/type/edit');?>" method="post">
+            <h3>编辑板块</h3>
+            排列顺序：<input type="text" name="order" value="<?php echo ($forum["order"]); ?>" class="text" /> <br/>
+            板块名称：<input type="text" name="name" value="<?php echo ($forum["name"]); ?>"  class="text" /><br/>
+            所属分类：<select name="sort_id">
+            		<?php if(is_array($sort)): $i = 0; $__LIST__ = $sort;if( count($__LIST__)==0 ) : echo "暂无分类" ;else: foreach($__LIST__ as $key=>$uo): $mod = ($i % 2 );++$i;?><option value="<?php echo ($uo["id"]); ?>"><?php echo ($uo["sort_name"]); ?></option><?php endforeach; endif; else: echo "暂无分类" ;endif; ?>
+               </select><br/>
+            板块介绍：<textarea name="intor" rows="3" class="text"><?php echo ($forum["intor"]); ?></textarea><br/>
+            发帖权限：<select name="allow">
+                        <option value="0">管理员</option>
+                        <option value="1">普通用户</option>
+                      </select><br/>
+            标记重要：<select name="hot">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                      </select><br/>
+            <input type="hidden" name="id" value="<?php echo ($forum["id"]); ?>" />
             <input type="submit" value="提交" class="btn success" />
         </form>
         </div><?php endif; ?>
