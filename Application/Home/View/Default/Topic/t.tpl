@@ -23,11 +23,18 @@
 						<div class="mod-body">
 							<div class="content markitup-box">
 								{$topic.content}
+								<notempty name="topic.sign">
+			<span style="display:block; margin-top: 20px; color:#666;font-size: 0.9em;">签名：{$topic.sign}</span>
+		</notempty>
 							</div>
 						</div>
 						<div class="mod-footer">
 							<div class="meta">
-								<span class="text-color-999"><-管理员操作-> </span>
+								<notempty name="power_nav">
+			<span style="display:block; margin-top: 5px;border-top: 1px solid #EAEAEA;padding-top: 10px;">
+				帖子操作：{$power_nav}
+			</span>
+		</notempty>
 							</div>
 						</div>
 					</div>

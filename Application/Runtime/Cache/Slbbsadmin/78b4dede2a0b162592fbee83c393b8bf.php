@@ -75,6 +75,7 @@
 	<div class="main-title">
 		<h2>系统基本配置</h2>
 	</div>
+	<form action="<?php echo U('Slbbsadmin/System/index');?>" method="post">
 	<label><b>站点名称:</b></label><br/>
 	<input type='text' name='site_title' value="<?php echo ($website["site_title"]); ?>" class='text' /><br/>
 	<font color="#777" size="0.9em">用于设置站点名称</font><br/><br/>
@@ -104,7 +105,7 @@
     <font color="#777" size="0.9em">输入你的网站ICP备案号</font><br/><br/>
     
 	<label><b>站点开关：</b></label>&nbsp;&nbsp;
-	开：<input type="radio" name="site_switch" <?php if($website["site_switch"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_switch" <?php if($website["site_switch"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
+	开：<input type="radio" name="site_switch" value='1' <?php if($website["site_switch"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_switch" value='1' <?php if($website["site_switch"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
 	
 	<label><b>站点关闭公告:</b></label><br/>
 	<textarea name="site_off_reason" row='5' style="width:220px;padding: 4px;
@@ -113,9 +114,10 @@
     <font color="#777" size="0.9em">如果要关闭站点，需要填入公告，将显示在关闭站点后的页面</font><br/><br/>
 	
 	<label><b>会员注册：</b></label>&nbsp;&nbsp;
-	开：<input type="radio" name="site_register" <?php if($website["site_register"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_register" <?php if($website["site_register"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
+	开：<input type="radio" name="site_register" value='1' <?php if($website["site_register"] == 1): ?>checked="checked"<?php endif; ?>>  &nbsp;&nbsp;关：<input type="radio" name="site_register" value='1' <?php if($website["site_register"] == 0): ?>checked="checked"<?php endif; ?>><br/><br/>
 
 	<input type="submit" value="保存设置" class="btn success" />
+	</form>
 
         </div>
         <div class="cont-ft">

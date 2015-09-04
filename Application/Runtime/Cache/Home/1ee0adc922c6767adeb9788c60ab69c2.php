@@ -118,11 +118,14 @@
 						<div class="mod-body">
 							<div class="content markitup-box">
 								<?php echo ($topic["content"]); ?>
+								<?php if(!empty($topic["sign"])): ?><span style="display:block; margin-top: 20px; color:#666;font-size: 0.9em;">签名：<?php echo ($topic["sign"]); ?></span><?php endif; ?>
 							</div>
 						</div>
 						<div class="mod-footer">
 							<div class="meta">
-								<span class="text-color-999"><-管理员操作-> </span>
+								<?php if(!empty($power_nav)): ?><span style="display:block; margin-top: 5px;border-top: 1px solid #EAEAEA;padding-top: 10px;">
+				帖子操作：<?php echo ($power_nav); ?>
+			</span><?php endif; ?>
 							</div>
 						</div>
 					</div>

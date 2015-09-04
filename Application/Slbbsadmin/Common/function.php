@@ -19,5 +19,11 @@ function extra_menu($extra_menu,&$base_menu){
         }
     }
 }
+//弹窗输出
+function a_r($str){
+	header("content-type:text/html;charset=utf-8");
+	echo "<script>alert('".$str."');javascript:history.go(-1);</script>";
+	exit();
+}
 
 ?>
